@@ -11,13 +11,18 @@ const API_URL = 'https://pixabay.com/api/';
 
 function searchImages() {
     const searchTerm = document.getElementById('searchInput').value;
+    const colorFilter = document.getElementById('colorSelect').value;
 
     if (!searchTerm) {
         alert('Please enter a valid search term.');
         return;
     }
 
-    const url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(searchTerm)}`;
+    let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(searchTerm)}`;
+
+    if (colorFilter) {
+        url += `&colors=${encodeURIComponent(colorFilter)}`;
+    }
 
     fetchData(url)
         .then(data => displayResults(data.hits))
