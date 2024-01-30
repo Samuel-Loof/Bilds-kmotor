@@ -3,8 +3,7 @@
 // add next and previous pages. Grey them out if there are no more pages to show
 // maximum of 10 images per page
 // reactive layout
-// able to change color for images, and to pick "any color"
-
+// tänk verkligen efter hur du ska formulera dig till google.
 
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
