@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,53 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
-<h2>Pikabay Image Search!</h2>
+<h2>Pixabay Image Search!</h2>
+
 <body>
     <div class="search container">
+
         <input type="text" id="searchInput" placeholder="Search...">
+        <label for="ColorSelect"></label>
+        <select name="Color" id="ColorSelect">
+            <option value="">any color</option>
+            <option value="grayscale">grayscale</option>
+            <option value="transparent">transparent</option>
+            <option value="red">red</option>
+            <option value="orange">orange</option>
+            <option value="yellow">yellow</option>
+            <option value="green">green</option>
+            <option value="turquoise">turquoise</option>
+            <option value="blue">blue</option>
+            <option value="lilac">lilac</option>
+            <option value="pink">pink</option>
+            <option value="white">white</option>
+            <option value="gray">gray</option>
+            <option value="black">black</option>
+            <option value="brown">brown</option>
+        </select>
+
         <button onclick="searchImages()">Search</button>
+
     </div>
 
-    <label for="ColorSelect"> Select color: </label>
-    <select name="Color" id="ColorSelect">
-        <option value="">Any color</option>
-        <option value="red">Red</option>
-
-    </select>
-
+    <table id="imageTable">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody id="imageTableBody">
+            <tr class="colorFilter">
+                <td>Data 1</td>
+                <td>Data 2</td>
+            </tr>
+        </tbody>
+    </table>
 
     <div id="results"></div>
+
+    
 </body>
+
 </html>

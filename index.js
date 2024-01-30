@@ -1,3 +1,11 @@
+// Change size of icons and fonts in css
+// fix css structure
+// add next and previous pages. Grey them out if there are no more pages to show
+// maximum of 10 images per page
+// reactive layout
+// able to change color for images, and to pick "any color"
+
+
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 
@@ -5,7 +13,7 @@ function searchImages() {
     const searchTerm = document.getElementById('searchInput').value;
 
     if (!searchTerm) {
-        alert('Search term is required.');
+        alert('Please enter a valid search term.');
         return;
     }
 
@@ -32,7 +40,7 @@ function displayResults(results) {
 
     if (results.length === 0) {
         const noResultsPara = document.createElement('p');
-        noResultsPara.textContent = 'No results found.';
+        noResultsPara.textContent = 'No results found :(';
         resultsContainer.appendChild(noResultsPara);
     } else {
         results.forEach(result => {

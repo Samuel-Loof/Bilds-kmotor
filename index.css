@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: black;
+    background: linear-gradient(135deg, rgb(21, 5, 8) 0%, rgb(91, 44, 3) 100%);
     text-align: center;
 }
 
@@ -10,6 +10,10 @@ body {
     margin-bottom: 20px;
 }
 
+h2{
+
+    color:aliceblue
+}
 input {
     flex: 1;
     padding: 5px;
