@@ -7,12 +7,21 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
-
+<h2>Pikabay Image Search!</h2>
 <body>
     <div class="search container">
-        <input type="text" id="searchInput" placeholder="Serach images on Pixabay">
+        <input type="text" id="searchInput" placeholder="Search...">
         <button onclick="searchImages()">Search</button>
     </div>
+
+    <label for="ColorSelect"> Select color: </label>
+    <select name="Color" id="ColorSelect">
+        <option value="">Any color</option>
+        <option value="red">Red</option>
+
+    </select>
+
+
     <div id="results"></div>
 </body>
 </html>
