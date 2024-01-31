@@ -5,6 +5,9 @@
 // reactive layout
 // tänk verkligen efter hur du ska formulera dig till google.
 
+// make container for "results" in html code
+//watch grid youtube
+
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 
