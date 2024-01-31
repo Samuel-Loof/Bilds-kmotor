@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixabay</title>
     <script src="index.js"></script>
+    <script src="index2.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
-<h2>Pixabay Image Search!</h2>
 
 <body>
+    
     <div class="search container">
+        <h2>Pixabay Image Search!</h2>
 
         <input type="text" id="searchInput" placeholder="Search...">
         <label for="colorSelect"></label>
@@ -33,28 +35,28 @@
             <option value="brown">brown</option>
         </select>
 
-        <button onclick="searchImages()">Search</button>
+        <button id="button" onclick="searchImages()">Submit</button>
 
     </div>
 
-    <!-- <table id="imageTable">
-        <thead>
-            <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-            </tr>
-        </thead>
-        <tbody id="imageTableBody">
-            <tr class="colorFilter">
-                <td>Data 1</td>
-                <td>Data 2</td>
-            </tr>
-        </tbody>
-    </table> -->
-
     <div id="results"></div>
+
+<!-- <div class="wrapper">
+<div class="push"></div>
+</div>
+
+<div class="footer"></div> -->
+
+    <footer>
+        <a href="" class="previous">&laquo; Previous</a>
+        <a href="" class="next">Next &raquo;</a>
+        
+        <a href="" class="previous round">&#8249;</a>
+        <a href="" class="next round">&#8250;</a>   
+    </footer>
 
 
 </body>
+
 
 </html>
