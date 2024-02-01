@@ -1,9 +1,3 @@
-// Change size of icons and fonts in css
-// fix css structure
-// add next and previous pages. Grey them out if there are no more pages to show
-// maximum of 10 images per page
-// reactive layout
-
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
