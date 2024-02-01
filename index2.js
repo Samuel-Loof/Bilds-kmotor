@@ -18,6 +18,8 @@ document.addEventListener('click', function(event) {
 });
 
 
-funciton pages () {
-    let nextPage = document.
-}
+// funciton pages () {
+//     // let nextPage = document.
+
+
+// }
