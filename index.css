@@ -1,7 +1,7 @@
 body {
     display: grid;
     align-items: start;
-    place-items: center;
+    /* place-items: center; */
     /* height: 100vh; */
     min-height: 97%;
     margin: 21px;
@@ -14,17 +14,8 @@ html{
     height: 100%;
 }
 
-.search-container {
-    display: grid;
-    gap: 15px;
-    margin-bottom: 21px;
-    padding: 30px;
-}
-
-.left-container {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
+textContent {
+    color: white;
 }
 
 h1 {
@@ -32,18 +23,14 @@ h1 {
     color: white;
     text-shadow: 0 0 3px #FF0000;
     font-size: 40px;
+    margin-top: 30px;
 }
 
-#searchInput, #colorSelect {
-    grid-column: 3;
-}
-
-#button {
-    grid-column: 2 /span 2;;
-}
-
-textContent {
-    color: white;
+.search-container {
+ font-size: 10px;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
 }
 
 h1:hover {
@@ -57,10 +44,12 @@ button {
 #results {
     margin-top: 15px;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    max-width: 100%;
-    gap: 10px
-    
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: stretch;
+    min-width: 100%;
+    height: auto;
+    grid-auto-flow: row;
+    justify-content: center;
 }
 
 img {
