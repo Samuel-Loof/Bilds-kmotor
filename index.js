@@ -3,10 +3,6 @@
 // add next and previous pages. Grey them out if there are no more pages to show
 // maximum of 10 images per page
 // reactive layout
-// tänk verkligen efter hur du ska formulera dig till google.
-
-// make container for "results" in html code
-//watch grid youtube
 
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
