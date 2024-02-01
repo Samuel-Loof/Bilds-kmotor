@@ -14,8 +14,8 @@
     
     <div class="search container">
         <h2>Pixabay Image Search!</h2>
-
-        <input type="text" id="searchInput" placeholder="Search...">
+        <!-- <label for=""></label> -->
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search...">
         <label for="colorSelect"></label>
         <select name="Color" id="colorSelect">
             <option value="">any color</option>
@@ -35,22 +35,27 @@
             <option value="brown">brown</option>
         </select>
 
-        <button id="button" onclick="searchImages()">Submit</button>
+        <button id="button" name="button" onclick="searchImages()">Submit</button>
 
     </div>
 
-    <div class="left-container">
+    <main>
+
+        <div class="left-container">
+            <div id="results"></div>
+        </div>
+    
+        <div class="right-container"></div>
         <div id="results"></div>
+    
+    <!-- <div class="wrapper">
+    <div class="push"></div>
     </div>
+    
+    <div class="footer"></div> -->
 
-    <div class="right-container"></div>
-    <div id="results"></div>
+    </main>
 
-<!-- <div class="wrapper">
-<div class="push"></div>
-</div>
-
-<div class="footer"></div> -->
 
     <footer>
         <a href="" class="previous">&laquo; Previous</a>

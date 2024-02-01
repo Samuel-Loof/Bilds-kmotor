@@ -10,8 +10,10 @@ body {
 }
 
 .search-container {
-    display: grid;
-    grid-template-columns: 2fr auto auto;
+    /* display: grid;
+    grid-template-columns: 2fr auto auto; */
+    display: flex;
+    flex-direction: row;
     gap: 15px;
     margin-bottom: 21px;
 }
