@@ -1,5 +1,5 @@
 body {
-    display: grid;
+    /* display: grid; */ /* removed grid for now */
     align-items: start;
     /* place-items: center; */
     /* height: 100vh; */
@@ -23,7 +23,7 @@ h1 {
     color: white;
     text-shadow: 0 0 3px #FF0000;
     font-size: 40px;
-    margin-top: 30px;
+    margin-top: 14px;
 }
 
 .search-container {
@@ -32,8 +32,12 @@ h1 {
  flex-direction: row;
  justify-content: center;
  gap: 10px;
- margin-bottom: 500px;
+ /* margin-bottom: 500px; */
 }
+
+#button, #colorSelect, #searchInput {
+    font-size: 20px;  
+} 
 
 #searchInput {
     width: 200px;
@@ -52,8 +56,8 @@ button {
     margin-top: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: stretch;
-    min-width: 100%;
+    /* min-width: 100%; */
+    margin: 30px;
     height: auto;
     grid-auto-flow: row;
     justify-content: center;
@@ -90,14 +94,8 @@ a:hover {
     border-radius: 50%;
 }
 
-/* .footer {
-    margin: 0 auto 650px;
-} */
-
-/* #searchInput{
-    font-size: 25px;
+.previous, .next {
+    justify-content: end;
+    margin-top: 150px; /*keeping this for now */
 }
 
-#button, #colorSelect {
-    font-size: 30px;
-} */
