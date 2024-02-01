@@ -18,3 +18,6 @@ document.addEventListener('click', function(event) {
 });
 
 
+funciton pages () {
+    let nextPage = document.
+}
