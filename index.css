@@ -3,16 +3,18 @@
 /* increase image size from #results */
 /* add tags for the images */
 
+
 body {
-    /* display: grid; */ /* removed grid for now */
+    /* display: grid; /* removed grid for now */
     align-items: start;
     /* place-items: center; */
     /* height: 100vh; */
     min-height: 97%;
-    margin: 21px;
+    margin: 10px;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(78, 64, 52) 100%);
+    /* background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(78, 64, 52) 100%); */
     text-align: center;
+    background-color: #333;
 }
 
 html{
@@ -58,11 +60,11 @@ button {
 }
 
 #results {
-    margin-top: 15px;
+    margin-top: 21px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* min-width: 100%; */
-    margin: 30px;
+    margin: 10px;
     height: auto;
     grid-auto-flow: row;
     justify-content: center;
@@ -99,8 +101,19 @@ a:hover {
     border-radius: 50%;
 }
 
-.previous, .next {
-    justify-content: end;
-    margin-top: 150px; /*keeping this for now */
+footer {
+    text-align: center;
+    margin-top: 150px;
 }
 
+.previous, .next {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+}
+
+.previous[disabled], .next[disabled] {
+    color: #aaa;
+    pointer-events: none;
+}
