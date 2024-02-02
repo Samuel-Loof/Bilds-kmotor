@@ -71,17 +71,9 @@ if (currentPage < totalPages) {
     });
 }
 
-// Add a text element to display current page and total pages
-const paginationText = document.createElement('span');
-paginationText.textContent = `Page ${currentPage} of ${totalPages}`;
-
-// Insert the text element between previous and next buttons
-previousButton.parentNode.insertBefore(paginationText, nextButton);
-
 }
 
 function displayResults(results) {
-    // Display the search results in the results container
     const resultsContainer = document.getElementById('results');
     clearResults(resultsContainer);
 
@@ -91,16 +83,27 @@ function displayResults(results) {
         noResultsPara.textContent = 'No results found :(';
         resultsContainer.appendChild(noResultsPara);
     } else {
-        // Display each result as an image in a div
         results.forEach(result => {
+        
             const resultDiv = document.createElement('div');
             const imageElement = document.createElement('img');
-            imageElement.src = result.previewURL;
+            
+            // Set the source (URL) of the image
+            imageElement.src = result.webformatURL; 
+            
+            imageElement.style.width = '350px';
+            imageElement.style.height = '300px';
+            
+
+            // Append the image element to the result div
             resultDiv.appendChild(imageElement);
+
+            // Append the result div to the results container
             resultsContainer.appendChild(resultDiv);
         });
     }
 }
+
 
 function clearResults(container) {
     // Clear the contents of the results container
