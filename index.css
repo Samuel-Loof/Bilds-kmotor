@@ -1,3 +1,8 @@
+/* hide next and previous buttons */
+/* reactive layout */
+/* increase image size from #results */
+/* add tags for the images */
+
 body {
     /* display: grid; */ /* removed grid for now */
     align-items: start;
