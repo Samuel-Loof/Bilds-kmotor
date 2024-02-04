@@ -1,23 +1,27 @@
 /* hide next and previous buttons */
 /* reactive layout */
-/* add tags for the images */
-/* fix horizontal space between images */
+/* check bugs */
 
 
 body {
-    /* display: grid; /* removed grid for now */
-    align-items: start;
+    /* /* display: grid; removed grid for now */
+    /* align-items: start; */
     /* place-items: center; */
     /* height: 100vh; */
+    /* display: grid;
+    place-items: center; */
     min-height: 97%;
     margin: 10px;
     font-family: Arial, sans-serif;
     /* background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(78, 64, 52) 100%); */
     text-align: center;
+    align-items: center;
+    justify-content: center;
     background-color: #333;
+
 }
 
-html{
+html {
     height: 100%;
 }
 
@@ -34,17 +38,19 @@ h1 {
 }
 
 .search-container {
- font-size: 10px;
- display: flex;
- flex-direction: row;
- justify-content: center;
- gap: 10px;
- /* margin-bottom: 500px; */
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    /* margin-bottom: 500px; */
 }
 
-#button, #colorSelect, #searchInput {
-    font-size: 20px;  
-} 
+#button,
+#colorSelect,
+#searchInput {
+    font-size: 20px;
+}
 
 #searchInput {
     width: 200px;
@@ -61,29 +67,40 @@ button {
 
 #results {
     /* margin-top: 21px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 20px;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* margin: 20px;
     height: auto;
     grid-auto-flow: row;
     grid-gap: 30px;
     justify-content: center;
-    font-size: 0; */
-    display: grid;
+    font-size: 0;  */
+    grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin: 10px;
+    /* gap: 5px; */
+    margin: 30px;
 
 }
+
+#results > div {
+    flex: 1 0 calc(20% - 30px); /* Adjust width based on the number of items and gap */
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
 
 #results img {
     max-width: 100%;
     height: auto;
+    border: 2px solid #393d49;
 }
 
 #results img:nth-last-child(2),
 #results img:nth-last-child(1) {
-    grid-column: span 2; /* Center the last two images by spanning two columns */
+    grid-column: span 2;
+    /* Center the last two images by spanning two columns */
 }
 
 img {
@@ -123,15 +140,49 @@ footer {
     margin-bottom: 30px;
 }
 
-.previous, .next {
+.previous,
+.next {
     text-decoration: none;
     color: #333;
     border: 1px solid #ccc;
     margin: 0 5px;
 }
 
+.previous[disabled], .next[disabled] {
+    display: none !important;
+  }
+  
+
 p {
     color: white;
     font-style: serif;
     font-weight: bold
+}
+
+@media (max-width: 1300px) {
+    #results {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    #results {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 785px) {
+    #results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 535px) {
+    #results {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

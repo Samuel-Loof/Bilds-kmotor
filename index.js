@@ -1,3 +1,4 @@
+// document.addEventListener('DOMContentLoaded', function () 
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
@@ -29,6 +30,11 @@ function searchImages() {
         .catch(error => handleFetchError(error));
 }
 
+function setFilter() {
+    // Update colorFilter based on user selection
+    colorFilter = document.getElementById('colorSelect').value;
+}
+
 function fetchData(url) {
     // Fetch data from the Pixabay API
     return fetch(url)
@@ -41,13 +47,19 @@ function fetchData(url) {
 }
 
 function updatePaginationButtons(totalHits) {
-    // Get references to previous and next buttons
     const previousButton = document.querySelector('.previous');
     const nextButton = document.querySelector('.next');
 
     // Set default href values
     previousButton.href = `javascript:void(0)`;
     nextButton.href = `javascript:void(0)`;
+
+    // Initially hide next and previous buttons
+    nextButton.style.display = 'none';
+    previousButton.style.display = 'none';
+
+    const itemsPerPage = 10;
+    let totalPages = Math.ceil(totalHits / itemsPerPage);
 
     // If not on the first page, enable previous button
     if (currentPage > 1) {
@@ -58,19 +70,20 @@ function updatePaginationButtons(totalHits) {
         });
     }
 
-// Calculate total pages based on total hits and items per page
-//here we assume/want 10 items per page
-let totalPages = Math.ceil(totalHits / 10);
+    // If not on the last page, enable next button
+    if (currentPage < totalPages) {
+        nextButton.href = `javascript:void(0)`;
+        nextButton.addEventListener('click', () => {
+            currentPage++;
+            searchImages();
+        });
+    }
 
-// If not on the last page, enable next button
-if (currentPage < totalPages) {
-    nextButton.href = `javascript:void(0)`;
-    nextButton.addEventListener('click', () => {
-        currentPage++;
-        searchImages();
-    });
-}
-
+    // Show next and previous buttons if there are search results
+    if (totalHits > 0) {
+        nextButton.style.display = ''; 
+        previousButton.style.display = ''; 
+    }
 }
 
 function displayResults(results) {
@@ -89,7 +102,7 @@ function displayResults(results) {
 
             // Set the source (URL) of the image
             imageElement.src = result.webformatURL;
-            imageElement.style.width = '300px';
+            imageElement.style.width = '275px';
             imageElement.style.height = '275px';
 
             // Check if there is a property for tags
@@ -111,8 +124,6 @@ function displayResults(results) {
         });
     }
 }
-
-
 
 function clearResults(container) {
     // Clear the contents of the results container

@@ -9,17 +9,9 @@ document.getElementById('searchInput').addEventListener('click', function() {
     this.focus();
 });
 
-// Additional code to handle the 'click' event on the document if needed
 document.addEventListener('click', function(event) {
     // Check if the click target is not the search input
     if (event.target.id !== 'searchInput') {
         searchImages();
     }
 });
-
-
-// funciton pages () {
-//     // let nextPage = document.
-
-
-// }

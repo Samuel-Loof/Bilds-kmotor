@@ -7,7 +7,7 @@
     <title>Pixabay</title>
     <script src="updatePagination.js"></script>
     <script src="index.js"></script>
-    <script src="index2.js"></script>
+    <script src="EnterToSubmit.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <header>
@@ -45,12 +45,22 @@
     <div id="results"></div>
 
     <footer>
+        <div id="page"></div>
+<!-- 
         <a href="javascript:void(0)" class="previous">&laquo; <strong>Previous page</strong></a>
-        <a href="javascript:void(0)" class="next"><strong>Next page</strong> &raquo;</a>
+        <a href="javascript:void(0)" class="next"><strong>Next page</strong> &raquo;</a>     -->
 
-        <!-- <a href="javascript:void(0)" class="previous round">&#8249;</a>
-        <a href="javascript:void(0)" class="next round">&#8250;</a> -->
+        <a href="javascript:void(0)" class="previous" onclick="previousPage()">« Previous</a>
+        <a href="javascript:void(0)" class="next" onclick="nextPage()">Next »</a>
+
+        <!-- <div id="pagination-container">
+            <button class="pagination-btn" onclick="previousPage()" id="prevBtn" disabled>Previous</button>
+            <button class="pagination-btn" onclick="nextPage()" id="nextBtn" disabled>Next</button>
+        </div> -->
+    
     </footer>
+
+
 
 
 </body>
