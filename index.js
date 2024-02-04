@@ -84,25 +84,34 @@ function displayResults(results) {
         resultsContainer.appendChild(noResultsPara);
     } else {
         results.forEach(result => {
-        
             const resultDiv = document.createElement('div');
             const imageElement = document.createElement('img');
-            
+
             // Set the source (URL) of the image
-            imageElement.src = result.webformatURL; 
-            
-            imageElement.style.width = '350px';
-            imageElement.style.height = '300px';
+            imageElement.src = result.webformatURL;
+            imageElement.style.width = '300px';
+            imageElement.style.height = '275px';
+
+            // Check if there is a property for tags
+            const tags = result.tags || result.userTags || result.user;
+
+            const tagsPara = document.createElement('p');
+            const userPara = document.createElement(`p`);
+            tagsPara.textContent = `Tags: ${tags}`;
+            userPara.textContent = `User: ${result.user}`;
             
 
-            // Append the image element to the result div
+            // Append the image, tags, and author element to the result div
             resultDiv.appendChild(imageElement);
+            resultDiv.appendChild(tagsPara);
+            resultDiv.appendChild(userPara);
 
             // Append the result div to the results container
             resultsContainer.appendChild(resultDiv);
         });
     }
 }
+
 
 
 function clearResults(container) {
