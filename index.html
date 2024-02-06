@@ -16,7 +16,6 @@
 
 <body>
     <div class="search-container">
-        <!-- <label for=""></label> -->
         <input type="text" id="searchInput" name="searchInput" placeholder="Search...">
         <label for="colorSelect"></label>
         <select name="Color" id="colorSelect">
@@ -46,18 +45,29 @@
 
     <footer>
         <div id="page"></div>
-<!-- 
+        <!-- 
         <a href="javascript:void(0)" class="previous">&laquo; <strong>Previous page</strong></a>
         <a href="javascript:void(0)" class="next"><strong>Next page</strong> &raquo;</a>     -->
 
-        <a href="javascript:void(0)" class="previous" onclick="previousPage()">« Previous</a>
-        <a href="javascript:void(0)" class="next" onclick="nextPage()">Next »</a>
-
-        <!-- <div id="pagination-container">
-            <button class="pagination-btn" onclick="previousPage()" id="prevBtn" disabled>Previous</button>
-            <button class="pagination-btn" onclick="nextPage()" id="nextBtn" disabled>Next</button>
+        <!-- <div class="container">
+            <div class="progrss-container">
+                <div class="progress" id="progress"></div>
+                div
+            </div>
         </div> -->
-    
+
+
+
+        <div class="container" id="content">
+            <input type="hidden" id="totalHits" value="">
+
+            <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()" style="display: none;">«Previous page</a>
+            <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next page»</a>
+
+        </div>
+
+
+
     </footer>
 
 

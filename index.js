@@ -2,10 +2,31 @@
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
+const imagesPerPage = 10; // Define the number of images per page
+
+// Initialize index
+let currentImageIndex = 0;
+
+// Function to handle pagination when next button is clicked
+function nextPage() {
+    currentPage++;
+    searchImages();
+}
+
+// Function to handle pagination when previous button is clicked
+function previousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        searchImages();
+    } else {
+        console.log('Reached beginning of gallery.');
+    }
+}
 
 function searchImages() {
     const searchTerm = document.getElementById('searchInput').value;
     const colorFilter = document.getElementById('colorSelect').value;
+    const content = document.getElementById('content');
 
     if (!searchTerm) {
         alert('Please enter a valid search term.');
@@ -21,11 +42,12 @@ function searchImages() {
         url += `&colors=${encodeURIComponent(colorFilter)}`;
     }
 
-    // Fetch data, display results, and update the pagination buttons
+    // Fetch data from the Pixabay API
     fetchData(url)
         .then(data => {
+            const totalHits = data.totalHits; // Extract totalHits from the API response
             displayResults(data.hits);
-            updatePaginationButtons(data.totalHits);
+            updatePaginationButtons(totalHits); // Pass totalHits to updatePaginationButtons
         })
         .catch(error => handleFetchError(error));
 }
@@ -40,49 +62,39 @@ function fetchData(url) {
     return fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Failed to fetch data from ${url}. Status: ${response.status}`);            
+                throw new Error(`Failed to fetch data from ${url}. Status: ${response.status}`);
             }
             return response.json();
         });
 }
 
 function updatePaginationButtons(totalHits) {
-    const previousButton = document.querySelector('.previous');
-    const nextButton = document.querySelector('.next');
+    const previousButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
 
     // Set default href values
     previousButton.href = `javascript:void(0)`;
     nextButton.href = `javascript:void(0)`;
 
-    // Initially hide next and previous buttons
-    nextButton.style.display = 'none';
-    previousButton.style.display = 'none';
-
-    const itemsPerPage = 10;
-    let totalPages = Math.ceil(totalHits / itemsPerPage);
-
-    // If not on the first page, enable previous button
-    if (currentPage > 1) {
-        previousButton.href = `javascript:void(0)`;
-        previousButton.addEventListener('click', () => {
-            currentPage--;
-            searchImages();
-        });
+    // If totalHits is not provided or is 0, don't show any pagination buttons
+    if (!totalHits || totalHits === 0) {
+        return;
     }
 
-    // If not on the last page, enable next button
+    const totalPages = Math.ceil(totalHits / imagesPerPage);
+
+    // Show next button if there are search results and currentPage is not the last page
     if (currentPage < totalPages) {
-        nextButton.href = `javascript:void(0)`;
-        nextButton.addEventListener('click', () => {
-            currentPage++;
-            searchImages();
-        });
+        nextButton.style.display = '';
     }
 
-    // Show next and previous buttons if there are search results
-    if (totalHits > 0) {
-        nextButton.style.display = ''; 
-        previousButton.style.display = ''; 
+    // If currentPage is greater than 1, enable and show previous button
+    if (currentPage > 1) {
+        previousButton.style.display = '';
+        previousButton.disabled = false;
+    } else {
+        previousButton.style.display = 'none';
+        previousButton.disabled = true;
     }
 }
 
@@ -112,7 +124,6 @@ function displayResults(results) {
             const userPara = document.createElement(`p`);
             tagsPara.textContent = `Tags: ${tags}`;
             userPara.textContent = `User: ${result.user}`;
-            
 
             // Append the image, tags, and author element to the result div
             resultDiv.appendChild(imageElement);
@@ -137,6 +148,3 @@ function handleFetchError(error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred.';
     alert(`Failed to fetch data. Error: ${errorMessage}. Please try again later.`);
 }
-
-
-
