@@ -4,11 +4,16 @@ let currentPage = 1;
 const imagesPerPage = 10; // Define the number of images per page
 
 let currentImageIndex = 0;
+let submitted = false;
 
 // Function to handle pagination when next button is clicked
 function nextPage() {
-    currentPage++;
-    searchImages();
+    if (!submitted) {
+        currentPage++;
+        searchImages();
+    } else {       
+        currentPage++;
+    }
 }
 
 function previousPage() {
@@ -27,6 +32,8 @@ function searchImages() {
 
     if (!searchTerm) {
         alert('Please enter a valid search term.');
+        // Set searching to false when no search term is provided
+        searching = false;
         return;
     }
 
@@ -45,9 +52,17 @@ function searchImages() {
             const totalHits = data.totalHits; // Extract totalHits from the API response
             displayResults(data.hits);
             updatePaginationButtons(totalHits); // Pass totalHits to updatePaginationButtons
+            
+            // Set searching to false when the search is completed
+            searching = false;
         })
-        .catch(error => handleFetchError(error));
+        .catch(error => {
+            handleFetchError(error);
+            // Ensure searching is set to false even if there's an error
+            searching = false;
+        });
 }
+
 
 function setFilter() {
     // Update colorFilter based on user selection
@@ -77,7 +92,7 @@ function updatePaginationButtons(totalHits) {
         previousButton.style.display = '';
         previousButton.disabled = false;
     } else {
-        previousButton.style.display = '';
+        previousButton.style.display = 'none';
         previousButton.disabled = true;
     }
 
@@ -156,21 +171,3 @@ function handleFetchError(error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred.';
     alert(`Failed to fetch data. Error: ${errorMessage}. Please try again later.`);
 }
-
-document.addEventListener('keyup', function(event) {
-    if (event.key === 'Enter') {
-        searchImages();
-    }
-});
-
-document.getElementById('searchInput').addEventListener('click', function() {
-    // Ensure the search input regains focus when clicked
-    this.focus();
-});
-
-document.addEventListener('click', function(event) {
-    // Check if the click target is not the search input
-    if (event.target.id !== 'searchInput') {
-        searchImages();
-    }
-});

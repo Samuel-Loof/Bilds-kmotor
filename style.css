@@ -1,7 +1,5 @@
-/* hide next and previous buttons */
-/* reactive layout */
+/* disable next and previous buttons */
 /* check bugs */
-
 
 body {
     min-height: 97%;
@@ -15,9 +13,9 @@ body {
 
 }
 
-/* html {
+html {
     height: 100%;
-} */
+}
 
 textContent {
     color: white;
@@ -134,30 +132,44 @@ p {
     font-weight: bold
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1420px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media (max-width: 785px) {
+@media (max-width: 969px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 535px) {
+@media (max-width: 669px) {
     #results {
         display: grid;
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 469px) {
+    #results {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .search-container {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .prev {
+        margin-bottom: 10px;
     }
 }
