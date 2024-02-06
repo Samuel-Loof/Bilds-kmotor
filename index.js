@@ -1,10 +1,8 @@
-// document.addEventListener('DOMContentLoaded', function () 
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
 const imagesPerPage = 10; // Define the number of images per page
 
-// Initialize index
 let currentImageIndex = 0;
 
 // Function to handle pagination when next button is clicked
@@ -13,7 +11,6 @@ function nextPage() {
     searchImages();
 }
 
-// Function to handle pagination when previous button is clicked
 function previousPage() {
     if (currentPage > 1) {
         currentPage--;
@@ -57,6 +54,43 @@ function setFilter() {
     colorFilter = document.getElementById('colorSelect').value;
 }
 
+function updatePaginationButtons(totalHits) {
+    const previousButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    // Set default href values
+    previousButton.href = `javascript:void(0)`;
+    nextButton.href = `javascript:void(0)`;
+
+    // If totalHits is not provided or is 0, don't show any pagination buttons
+    if (!totalHits || totalHits === 0) {
+        previousButton.style.display = 'none';
+        nextButton.style.display = 'none';
+        return;
+    }
+
+    const itemsPerPage = 10;
+    let totalPages = Math.ceil(totalHits / itemsPerPage);
+
+    // If currentPage is greater than 1, enable and show previous button
+    if (currentPage > 1) {
+        previousButton.style.display = '';
+        previousButton.disabled = false;
+    } else {
+        previousButton.style.display = '';
+        previousButton.disabled = true;
+    }
+
+    // If currentPage is the last page, disable the next button
+    if (currentPage === totalPages) {
+        nextButton.style.display = 'none';
+        nextButton.disabled = true;
+    } else {
+        nextButton.style.display = '';
+        nextButton.disabled = false;
+    }
+}
+
 function fetchData(url) {
     // Fetch data from the Pixabay API
     return fetch(url)
@@ -68,45 +102,18 @@ function fetchData(url) {
         });
 }
 
-function updatePaginationButtons(totalHits) {
-    const previousButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-
-    // Set default href values
-    previousButton.href = `javascript:void(0)`;
-    nextButton.href = `javascript:void(0)`;
-
-    // If totalHits is not provided or is 0, don't show any pagination buttons
-    if (!totalHits || totalHits === 0) {
-        return;
-    }
-
-    const totalPages = Math.ceil(totalHits / imagesPerPage);
-
-    // Show next button if there are search results and currentPage is not the last page
-    if (currentPage < totalPages) {
-        nextButton.style.display = '';
-    }
-
-    // If currentPage is greater than 1, enable and show previous button
-    if (currentPage > 1) {
-        previousButton.style.display = '';
-        previousButton.disabled = false;
-    } else {
-        previousButton.style.display = 'none';
-        previousButton.disabled = true;
-    }
-}
-
 function displayResults(results) {
     const resultsContainer = document.getElementById('results');
     clearResults(resultsContainer);
 
     if (results.length === 0) {
         // Display a message if no results are found
+        const messageContainer = document.createElement('div');
+        messageContainer.classList.add('message-container'); 
         const noResultsPara = document.createElement('p');
         noResultsPara.textContent = 'No results found :(';
-        resultsContainer.appendChild(noResultsPara);
+        messageContainer.appendChild(noResultsPara);
+        resultsContainer.appendChild(messageContainer);
     } else {
         results.forEach(result => {
             const resultDiv = document.createElement('div');
@@ -135,6 +142,7 @@ function displayResults(results) {
         });
     }
 }
+add
 
 function clearResults(container) {
     // Clear the contents of the results container
@@ -148,3 +156,21 @@ function handleFetchError(error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred.';
     alert(`Failed to fetch data. Error: ${errorMessage}. Please try again later.`);
 }
+
+document.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        searchImages();
+    }
+});
+
+document.getElementById('searchInput').addEventListener('click', function() {
+    // Ensure the search input regains focus when clicked
+    this.focus();
+});
+
+document.addEventListener('click', function(event) {
+    // Check if the click target is not the search input
+    if (event.target.id !== 'searchInput') {
+        searchImages();
+    }
+});
