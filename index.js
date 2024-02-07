@@ -2,34 +2,47 @@ const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
 const imagesPerPage = 10; // Define the number of images per page
-let issearching = false;
-
+let currentSearchTerm = "";
 let currentImageIndex = 0;
+let oldSearchTerm = "";
+
+let currentColor = "any";
+let oldColor = "";
+
+// // update dropdownlista
+// //update click function
+// // current searchterm changes on every keyup
+// // when pressing enter or submit, update old color and searchterm
+// //current color changes on every dropdown color menu
+// //update enter
 
 function nextPage() {
+    logToPage('next page.');
     currentPage++;
 
     if (!issearching) {
-        searchImages();
+        searchImages(currentSearchTerm);
     }
 }
 
 function previousPage() {
+    logToPage('previous page.');
     if (currentPage > 1) {
         currentPage--;
 
         if (!issearching) {
-            searchImages();
+            searchImages(currentSearchTerm);
         }
     } else {
-        console.log('Reached beginning of gallery.');
+        logToPage('Reached beginning of gallery.');
     }
 }
 
-function searchImages() {
+function searchImages(searchTerm) {
+    logToPage('searchImages.');
     issearching = true;
 
-    const searchTerm = document.getElementById('searchInput').value;
+
     const colorFilter = document.getElementById('colorSelect').value;
     // const content = document.getElementById('content');
 
@@ -43,7 +56,7 @@ function searchImages() {
     currentPage = Math.max(1, currentPage);
 
     // Construct the API URL with the current page and other parameters
-    let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(searchTerm)}&per_page=10&page=${currentPage}`;
+    let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(currentSearchTerm)}&per_page=10&page=${currentPage}`;
 
     if (colorFilter) {
         url += `&colors=${encodeURIComponent(colorFilter)}`;
@@ -61,11 +74,13 @@ function searchImages() {
 }
 
 function setFilter() {
+    logToPage('setFilter.');
     // Update colorFilter based on user selection
     colorFilter = document.getElementById('colorSelect').value;
 }
 
 function updatePaginationButtons(totalHits) {
+    logToPage('pagination');
     const previousButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
 
@@ -104,6 +119,7 @@ function updatePaginationButtons(totalHits) {
 }
 
 function fetchData(url) {
+    logToPage('fetchData.');
     // Fetch data from the Pixabay API
     return fetch(url)
         .then(response => {
@@ -115,6 +131,7 @@ function fetchData(url) {
 }
 
 function displayResults(results) {
+    logToPage('display results.');
     issearching = false;
 
     const resultsContainer = document.getElementById('results');
@@ -158,12 +175,17 @@ function displayResults(results) {
 }
 
 document.addEventListener('keyup', function (event) {
+    logToPage('keyup.');
     if (event.key === 'Enter') {
-        searchImages();
+        logToPage('enter.');
+        currentSearchTerm = document.getElementById('searchInput').value;
+        searchImages(currentSearchTerm);
+        
     }
 });
 
 document.getElementById('searchInput').addEventListener('click', function () {
+    logToPage('searchinput click');
     // Ensure the search input regains focus when clicked
     this.focus();
 });
@@ -171,11 +193,14 @@ document.getElementById('searchInput').addEventListener('click', function () {
 document.addEventListener('click', function (event) {
     // Check if the click target is not the search input
     if (event.target.id !== 'searchInput') {
-        searchImages();
+        currentSearchTerm = document.getElementById('searchInput').value;
+        searchImages(currentSearchTerm);
+        logToPage(currentSearchTerm);
     }
 });
 
 function clearResults(container) {
+    logToPage('clearResults');
     // Clear the contents of the results container
     while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -189,3 +214,13 @@ function handleFetchError(error) {
 }
 
 
+function logToPage(message) {
+    console.log(message); // Log to console as usual
+
+    // Create a new element to hold the log message
+    var logElement = document.createElement('p');
+    logElement.textContent = message; // Add your message as the text content
+
+    // Append the new element to your log container
+    document.getElementById('log').appendChild(logElement);
+}
