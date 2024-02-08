@@ -2,7 +2,7 @@
 
 body {
     min-height: 97%;
-    margin: 10px;
+    margin: 0;
     font-family: Arial, sans-serif;
     /* background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(78, 64, 52) 100%); */
     text-align: center;
@@ -124,7 +124,6 @@ footer {
     cursor: default; /* Set cursor to default */
 }
   
-
 p {
     color: white;
     font-style: serif;
@@ -136,6 +135,7 @@ p {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
+   
 }
 
 @media (max-width: 1300px) {
