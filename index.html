@@ -16,42 +16,46 @@
 </header>
 
 <body>
-    <form class="search-container">
-        <input type="text" id="searchInput" name="searchInput" lebel for="searchInput" placeholder="Search...">
-        <label for="colorSelect"></label>
-        <select name="Color" id="colorSelect">
-            <option value="">any color</option>
-            <option value="grayscale">grayscale</option>
-            <option value="transparent">transparent</option>
-            <option value="red">red</option>
-            <option value="orange">orange</option>
-            <option value="yellow">yellow</option>
-            <option value="green">green</option>
-            <option value="turquoise">turquoise</option>
-            <option value="blue">blue</option>
-            <option value="lilac">lilac</option>
-            <option value="pink">pink</option>
-            <option value="white">white</option>
-            <option value="gray">gray</option>
-            <option value="black">black</option>
-            <option value="brown">brown</option>
-        </select>
-    
-        <button type="submit" id="submit-button" name="button">Submit</button>
-    </form>
-    
+    <div id="search-area">
+        <form class="search-container">
+            <input type="text" id="searchInput" name="searchInput" lebel for="searchInput" placeholder="Search...">
+            <label for="colorSelect"></label>
+            <select name="Color" id="colorSelect">
+                <option value="">any color</option>
+                <option value="grayscale">grayscale</option>
+                <option value="transparent">transparent</option>
+                <option value="red">red</option>
+                <option value="orange">orange</option>
+                <option value="yellow">yellow</option>
+                <option value="green">green</option>
+                <option value="turquoise">turquoise</option>
+                <option value="blue">blue</option>
+                <option value="lilac">lilac</option>
+                <option value="pink">pink</option>
+                <option value="white">white</option>
+                <option value="gray">gray</option>
+                <option value="black">black</option>
+                <option value="brown">brown</option>
+            </select>
+
+            <button type="submit" id="submit-button" name="button">Submit</button>
+        </form>
+    </div>
+
     <div id="results"></div>
+    
+</body>
 
-    <footer>
-        <div id="page"></div>
+    
+        <footer>
+            <div id="page"></div>
+            <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()"
+                style="display: none;">«Previous page</a>
+            <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next
+                page»</a>
+            </div>
 
-        <div class="container" id="content">
-            <input type="hidden" id="totalHits" value="">
+        </footer>
 
-            <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()" style="display: none;">«Previous page</a>
-            <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next page»</a>
-        </div>
-
-    </footer>
 
 </html>
