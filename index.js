@@ -1,28 +1,22 @@
 const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
-const imagesPerPage = 10; 
+const imagesPerPage = 10;
 let currentImageIndex = 0;
 let currentPage = 1;
 
-let currentSearchTerm = "";
+let newSearchTerm = "";
 let currentColor = "any color";
-issearching = false;
+
 
 function nextPage() {
     currentPage++;
-
-    if (!issearching) {
-        searchImages();
-    }
+    searchImages();
 }
 
 function previousPage() {
     if (currentPage > 1) {
         currentPage--;
-
-        if (!issearching) {
-            searchImages();
-        }
+        searchImages();
     }
 }
 
@@ -44,7 +38,7 @@ function fetchData(url) {
 let form = document.querySelector("form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    currentSearchTerm = document.getElementById('searchInput').value;
+    newSearchTerm = document.getElementById('searchInput').value;
     currentColor = document.getElementById('colorSelect').value;
     setFilter();
     searchImages();

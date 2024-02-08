@@ -1,6 +1,4 @@
 function displayResults(results) {
-    issearching = false;
-
     const resultsContainer = document.getElementById('results');
     clearResults(resultsContainer);
 

@@ -1,9 +1,7 @@
 function searchImages() {
-    issearching = true;
-
     const colorFilter = document.getElementById('colorSelect').value;
 
-    if (!currentSearchTerm) {
+    if (!newSearchTerm) {
         alert('Please enter a valid search term.');
         issearching = false;
         return;
@@ -12,7 +10,7 @@ function searchImages() {
     currentPage = Math.max(1, currentPage);
 
     // Construct the API URL with the current page and other parameters
-    let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(currentSearchTerm)}&per_page=10&page=${currentPage}`;
+    let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(newSearchTerm)}&per_page=10&page=${currentPage}`;
 
     if (colorFilter) {
         url += `&colors=${encodeURIComponent(currentColor)}`;
