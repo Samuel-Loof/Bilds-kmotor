@@ -27,7 +27,6 @@ h1 {
 
 #search-area {
     height: 20%;
-    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,14 +77,12 @@ button {
     margin-bottom: 5px;
 }
 
-
 #results img {
     align-items: center;
     max-width: 100%;
     height: auto;
     border: 2px solid #393d49;
 }
-
 
 img {
     max-width: 100%;
@@ -106,7 +103,6 @@ a:hover {
 
 footer {
     text-align: center;
-
     margin-bottom: 30px;
 }
 
@@ -125,7 +121,15 @@ p {
     font-weight: bold
 }
 
-@media (max-width: 1400px) {
+.message-container p{
+    color: #FF0000; 
+}
+
+.message-container p {
+    margin: 0; /* Remove default margins */
+}
+
+@media (max-width: 1369px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
