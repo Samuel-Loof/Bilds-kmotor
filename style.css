@@ -1,5 +1,3 @@
-/* widgets? */
-
 body {
     min-height: 97%;
     margin: 0;
@@ -9,7 +7,6 @@ body {
     align-items: center;
     justify-content: center;
     background-color: black;
-
 }
 
 html {
@@ -28,13 +25,20 @@ h1 {
     margin-top: 14px;
 }
 
+#search-area {
+    height: 20%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .search-container {
     font-size: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
-    /* margin-bottom: 500px; */
 }
 
 #submit-button,
@@ -57,18 +61,19 @@ button {
 }
 
 #results {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    grid-gap: 10px;
+    /* height: 80%; */
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 30px;
-
+    padding: 20px;
+    /* margin: 30px; */
 }
 
-#results > div {
-    flex: 1 0 calc(20% - 30px); /* Adjust width based on the number of items and gap */
+#results :nth-last-child(2) {
+    grid-column-end: 3;
+}
+
+#results>div {
+    flex: 1 0 calc(20% - 30px);
     box-sizing: border-box;
     margin-bottom: 5px;
 }
@@ -81,11 +86,6 @@ button {
     border: 2px solid #393d49;
 }
 
-#results img:nth-last-child(2),
-#results img:nth-last-child(1) {
-    grid-column: span 2;
-    /* Center the last two images by spanning two columns */
-}
 
 img {
     max-width: 100%;
@@ -110,7 +110,8 @@ footer {
     margin-bottom: 30px;
 }
 
-.prev, .next {
+.prev,
+.next {
     text-decoration: none;
     background-color: #f1f1f1;
     color: #333;
@@ -118,56 +119,56 @@ footer {
     margin: 0 5px;
 }
 
-.disabled {
-    color: #999; /* Change the color to grey */
-    pointer-events: none; /* Disable pointer events */
-    cursor: default; /* Set cursor to default */
-}
-  
 p {
     color: white;
     font-style: serif;
     font-weight: bold
 }
 
-@media (max-width: 1420px) {
-    #results {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-   
-}
-
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    #results :nth-last-child(2) {
+        grid-column-end: auto;
+    }
+
+    #results :last-child:nth-child(3n - 2) {
+        grid-column-end: 3;
+
+    }
 }
 
-@media (max-width: 969px) {
+@media (max-width: 1100px) {
     #results {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 669px) {
+@media (max-width: 700px) {
     #results {
         display: grid;
         grid-template-columns: 1fr;
+    }
+    #results :last-child:nth-child(3n - 2) {
+        grid-column-end: auto;
     }
 }
 
-@media (max-width: 469px) {
+@media (max-width: 480px) {
     #results {
         display: grid;
         grid-template-columns: 1fr;
     }
+
     .search-container {
         display: grid;
         grid-template-columns: auto;
     }
+
     .prev {
         margin-bottom: 10px;
     }
