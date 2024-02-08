@@ -2,26 +2,21 @@ const API_KEY = '42113626-a85b698dbb2334412768f0e98';
 const API_URL = 'https://pixabay.com/api/';
 let currentPage = 1;
 const imagesPerPage = 10; // Define the number of images per page
-let currentSearchTerm = "";
 let currentImageIndex = 0;
+let currentSearchTerm = "";
 let oldSearchTerm = "";
 
-let currentColor = "any";
-let oldColor = "";
+// issearching = false;
 
-// // update dropdownlista
-// //update click function
-// // current searchterm changes on every keyup
-// // when pressing enter or submit, update old color and searchterm
-// //current color changes on every dropdown color menu
-// //update enter
+let currentColor = "any color";
+let oldColor = "";
 
 function nextPage() {
     logToPage('next page.');
     currentPage++;
 
     if (!issearching) {
-        searchImages(currentSearchTerm);
+        searchImages();
     }
 }
 
@@ -31,22 +26,20 @@ function previousPage() {
         currentPage--;
 
         if (!issearching) {
-            searchImages(currentSearchTerm);
+            searchImages();
         }
     } else {
         logToPage('Reached beginning of gallery.');
     }
 }
 
-function searchImages(searchTerm) {
+function searchImages() {
     logToPage('searchImages.');
     issearching = true;
 
-
     const colorFilter = document.getElementById('colorSelect').value;
-    // const content = document.getElementById('content');
 
-    if (!searchTerm) {
+    if (!currentSearchTerm) {
         alert('Please enter a valid search term.');
         // Set searching to false when no search term is provided
         issearching = false;
@@ -59,7 +52,7 @@ function searchImages(searchTerm) {
     let url = `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(currentSearchTerm)}&per_page=10&page=${currentPage}`;
 
     if (colorFilter) {
-        url += `&colors=${encodeURIComponent(colorFilter)}`;
+        url += `&colors=${encodeURIComponent(currentColor)}`;
     }
     fetchData(url)
         .then(data => {
@@ -174,30 +167,15 @@ function displayResults(results) {
     }
 }
 
-document.addEventListener('keyup', function (event) {
-    logToPage('keyup.');
-    if (event.key === 'Enter') {
-        logToPage('enter.');
-        currentSearchTerm = document.getElementById('searchInput').value;
-        searchImages(currentSearchTerm);
-        
-    }
+let form = document.querySelector("form");
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    currentSearchTerm = document.getElementById('searchInput').value;
+    currentColor = document.getElementById('colorSelect').value;
+    setFilter();
+    searchImages();
 });
 
-document.getElementById('searchInput').addEventListener('click', function () {
-    logToPage('searchinput click');
-    // Ensure the search input regains focus when clicked
-    this.focus();
-});
-
-document.addEventListener('click', function (event) {
-    // Check if the click target is not the search input
-    if (event.target.id !== 'searchInput') {
-        currentSearchTerm = document.getElementById('searchInput').value;
-        searchImages(currentSearchTerm);
-        logToPage(currentSearchTerm);
-    }
-});
 
 function clearResults(container) {
     logToPage('clearResults');
@@ -212,7 +190,6 @@ function handleFetchError(error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred.';
     alert(`Failed to fetch data. Error: ${errorMessage}. Please try again later.`);
 }
-
 
 function logToPage(message) {
     console.log(message); // Log to console as usual

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixabay</title>
-    <script src="updatePagination.js"></script>
-    <script src="index.js"></script>
-    <script src="enterToSubmit.js"></script>
+    <script src="updatePagination.js" defer></script>
+    <script src="index.js" defer></script>
+    <script src="enterToSubmit.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <header>
@@ -15,8 +15,8 @@
 </header>
 
 <body>
-    <div class="search-container">
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search...">
+    <form class="search-container">
+        <input type="text" id="searchInput" name="searchInput" lebel for="searchInput" placeholder="Search...">
         <label for="colorSelect"></label>
         <select name="Color" id="colorSelect">
             <option value="">any color</option>
@@ -35,46 +35,23 @@
             <option value="black">black</option>
             <option value="brown">brown</option>
         </select>
-
-        <button id="submit-button" name="button" onclick="searchImages()">Submit</button>
-
-    </div>
-
-    <!-- <div><img src="nature.avif" alt="Beautiful picture of a tree"></div> -->
-
-
+    
+        <button type="submit" id="submit-button" name="button">Submit</button>
+    </form>
+    
     <div id="results"></div>
 
     <footer>
         <div id="page"></div>
-        <!-- 
-        <a href="javascript:void(0)" class="previous">&laquo; <strong>Previous page</strong></a>
-        <a href="javascript:void(0)" class="next"><strong>Next page</strong> &raquo;</a>     -->
-
-        <!-- <div class="container">
-            <div class="progrss-container">
-                <div class="progress" id="progress"></div>
-                div
-            </div>
-        </div> -->
-
-
 
         <div class="container" id="content">
             <input type="hidden" id="totalHits" value="">
 
             <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()" style="display: none;">«Previous page</a>
             <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next page»</a>
-
         </div>
 
-
-
     </footer>
-
-
-
-
 </body>
 <body>
     <h1>Console Log Messages</h1>
