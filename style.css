@@ -79,6 +79,7 @@ button {
     max-width: 100%;
     height: auto;
     border: 2px solid #393d49;
+    border-radius: 20px;
 }
 
 img {
@@ -124,6 +125,11 @@ p {
 
 .message-container p {
     margin: 0;
+}
+
+#results>div:not(:has(.enlarged-image)):hover {
+    transform: scale(1.02) rotate(1deg);
+        transition: 200ms;
 }
 
 @media (max-width: 1369px) {
