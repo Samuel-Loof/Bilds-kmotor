@@ -60,11 +60,9 @@ button {
 }
 
 #results {
-    /* height: 80%; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 20px;
-    /* margin: 30px; */
 }
 
 #results :nth-last-child(2) {
@@ -126,7 +124,7 @@ p {
 }
 
 .message-container p {
-    margin: 0; /* Remove default margins */
+    margin: 0; 
 }
 
 @media (max-width: 1369px) {
