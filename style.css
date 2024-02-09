@@ -2,7 +2,6 @@ body {
     min-height: 97%;
     margin: 0;
     font-family: Arial, sans-serif;
-    /* background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(78, 64, 52) 100%); */
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -119,12 +118,12 @@ p {
     font-weight: bold
 }
 
-.message-container p{
-    color: #FF0000; 
+.message-container p {
+    color: #FF0000;
 }
 
 .message-container p {
-    margin: 0; 
+    margin: 0;
 }
 
 @media (max-width: 1369px) {
@@ -155,6 +154,7 @@ p {
         display: grid;
         grid-template-columns: 1fr;
     }
+
     #results :last-child:nth-child(3n - 2) {
         grid-column-end: auto;
     }

@@ -23,7 +23,7 @@ function updatePaginationButtons(totalHits) {
         previousButton.style.display = 'none';
     }
 
-    // If currentPage is the last page, disable the next button
+    // If currentPage is the last page, remove the next button
     if (currentPage === totalPages) {
         nextButton.style.display = 'none';
     } else {
