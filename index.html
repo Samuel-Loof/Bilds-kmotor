@@ -11,14 +11,15 @@
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
 <header>
     <h1>Pixabay Image Search!</h1>
 </header>
 
-<body>
     <div id="search-area">
         <form class="search-container">
-            <input type="text" id="searchInput" name="searchInput" lebel for="searchInput" placeholder="Search...">
+            <label for="searchInput"></label>   
+            <input type="text" id="searchInput" name="searchInput" placeholder="Search...">
             <label for="colorSelect"></label>
             <select name="Color" id="colorSelect">
                 <option value="">any color</option>
@@ -44,18 +45,16 @@
 
     <div id="results"></div>
 
+    <footer>
+        
+        <div id="page"></div>
+        <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()" style="display: none;">«Previous
+            page</a>
+        <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next
+            page»</a>
+    
+    </footer>
+
 </body>
-
-
-<footer>
-    <div id="page"></div>
-    <a href="javascript:void(0)" class="prev" id="prev" onclick="previousPage()" style="display: none;">«Previous
-        page</a>
-    <a href="javascript:void(0)" class="next" id="next" onclick="nextPage()" style="display: none;">Next
-        page»</a>
-    </div>
-
-</footer>
-
 
 </html>
