@@ -5,13 +5,13 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(144, 134, 134, 0.7), rgba(100, 98, 98, 0.7)), 
-    url( background-image.jpg);
+    background-image: linear-gradient(rgba(144, 134, 134, 0.7), rgba(100, 98, 98, 0.7)),
+        url(background-image.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    
+
 }
 
 html {
@@ -49,7 +49,7 @@ h1 {
 #colorSelect,
 #searchInput {
     font-size: 16px;
-    border-radius: 12px; 
+    border-radius: 12px;
     border: none;
     outline: none;
 }
@@ -120,10 +120,10 @@ footer {
     color: #333;
     border: 1px solid #ccc;
     margin: 0 5px;
-    border-radius: 12px; 
+    border-radius: 12px;
     border: none;
     outline: none;
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
 }
 
 p {
@@ -142,7 +142,7 @@ p {
 
 #results>div:not(:has(.enlarged-image)):hover {
     transform: scale(1.02) rotate(1deg);
-        transition: 200ms;
+    transition: 200ms;
 }
 
 @media (max-width: 1369px) {
